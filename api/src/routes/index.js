@@ -255,8 +255,9 @@ router.post("/recipe", async (req, res) => {
     aggregateLikes,
     healthScore,
     analyzedInstructions,
-    image,
-    diets,
+    img,
+    createdInDb,
+    diets
   } = req.body;
   if (!title || !summary) {
     return res.json("You must enter a title and a summary to create a recipe");
@@ -267,7 +268,8 @@ router.post("/recipe", async (req, res) => {
     aggregateLikes,
     healthScore,
     analyzedInstructions,
-    image,
+    img,
+    createdInDb
   });
   let dietDb = await Diet.findAll({ where: { name: diets } });
   recipeCreated.addDiet(dietDb);

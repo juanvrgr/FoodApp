@@ -5,11 +5,11 @@ import "../styles/Landing.css";
 export default function Landing() {
     return (
       <div className="landing">
-        const element = <h1 style={{ color: 'red' }}>Recipex</h1>
+        const element = <h1 style={{ color: 'red' }}>RECIPEX</h1>
         const element2 = <h2 style={{ color: 'red' }}>Here you can search for your favorite recipes or create your own!</h2>
         <div>
           <Link to="/home">
-            <button>LET'S GO!</button>
+            <button>LET'S COOK!</button>
           </Link>
         </div>
         <img

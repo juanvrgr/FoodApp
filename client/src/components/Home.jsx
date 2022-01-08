@@ -7,10 +7,12 @@ import {
     getTypesOfDiet,
     orderByName,
     orderByScoreLikes,
+    // filterCreated
 } from "../actions";
 import { Link } from "react-router-dom";
 import Card from "./Card";
 import Paginate from "./Paginate";
+import SearchBar from "./SearchBar";
 
 export default function Home() {
 const dispatch = useDispatch(); // DESPACHA LAS ACCIONES
@@ -59,6 +61,11 @@ function handleSelectByScore(e) {
     setOrderLike("Order" + e.target.value);
 }
 
+// function handleFilterCreated(e){
+//     // e.preventDefault();
+//     dispatch(filterCreated(e.target.value))
+// }
+
 
 useEffect(() => {
     dispatch(getRecipes());
@@ -73,6 +80,7 @@ return (
     <div>
         <Link to="/recipe">Create recipe!</Link>
         <h1>THE LAND OF RECIPES</h1>
+        <SearchBar />
         <button onClick={e=> {handleClick(e)}}>Show recipes</button>
         <div>
             <select onChange={(n) => handleSelectByName(n)}>
@@ -93,6 +101,11 @@ return (
             </option>
           ))}
         </select>
+        {/* <select onChange={e => handleFilterCreated(e)}>
+                <option value= 'All'>Todos</option>
+                <option value= 'created'>Creados</option>
+                
+            </select> */}
             </div>
             <Paginate
           recipesPerPage={recipesPerPage}

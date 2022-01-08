@@ -66,6 +66,7 @@ export const GET_NAME_RECIPE = "GET_NAME_RECIPE";
 export const GET_DIETS = "GET_DIETS";
 export const POST_RECIPE = "POST_RECIPE";
 export const GET_DETAIL = "GET_DETAIL";
+// export const FILTER_CREATED = 'FILTER_CREATED';
 
 export function getRecipes() {
   return async function (dispatch) {
@@ -161,3 +162,11 @@ export function getDetail(id) {
     }
   };
 }
+
+// export function filterCreated(payload){
+//   // console.log(payload)
+//    return{
+//        type: 'FILTER_CREATED',
+//        payload
+//    }
+// };
