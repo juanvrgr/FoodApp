@@ -15,10 +15,10 @@ function validate(input) {
   input.diets.length < 1
     ? (errors.diets = "Choose at least one diet")
     : (errors.diets = "");
-  if (!input.image.includes("https://") && !input.image.includes("http://")) {
-    errors.image = "This isn't a valid image address";
+  if (!input.img.includes("https://") && !input.img.includes("http://")) {
+    errors.img = "This isn't a valid image address";
   } else {
-    errors.image = "";
+    errors.img = "";
   }
   return errors;
 }
@@ -40,7 +40,7 @@ export default function RecipeCreate() {
         aggregateLikes: 0,
         healthScore: 0,
         analyzedInstructions: "",
-        image: "",
+        img: "",
         diets: [],
       });
 
@@ -71,7 +71,7 @@ export default function RecipeCreate() {
       }
 
       function handleSubmit(e) {
-        if (input.title && input.summary && input.image && input.diets.length > 0) {
+        if (input.title && input.summary && input.img && input.diets.length > 0) {
           e.preventDefault();
           dispatch(postRecipe(input));
           alert("Recipe succesfully Created!!");
@@ -81,7 +81,7 @@ export default function RecipeCreate() {
             aggregateLikes: 0,
             healthScore: 0,
             analyzedInstructions: "",
-            image: "",
+            img: "",
             diets: [],
           });
           navigate("/home");
@@ -161,11 +161,11 @@ export default function RecipeCreate() {
             <input
               type="text"
               placeholder="Example: https://..."
-              value={input.image}
-              name="image"
+              value={input.img}
+              name="img"
               onChange={(e) => handleChange(e)}
             />
-            {errors.image && <p>{errors.image}</p>}
+            {errors.img && <p>{errors.img}</p>}
             </div>
             <div>
             <span>Type of Diet:</span>

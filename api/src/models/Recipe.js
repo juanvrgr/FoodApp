@@ -15,19 +15,19 @@ module.exports = (sequelize) => {
       allowNull: false,
     },
     summary: {
-      type: DataTypes.TEXT,
+      type: DataTypes.STRING,
       allowNull: false,
     },
     aggregateLikes: {
       type: DataTypes.INTEGER,
     },
-    healtScore: {
+    healthScore: {
       type: DataTypes.INTEGER,
     },
     analyzedInstructions: {
-      type: DataTypes.JSON,
+      type: DataTypes.TEXT,
     },
-    img: {
+    image: {
       type: DataTypes.STRING,
     },
     createdInDb: {

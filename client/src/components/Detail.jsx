@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getDetail } from "../actions";
 import { Link, useParams } from "react-router-dom";
 
-export default function Detail(props) {
+export default function Detail() {
     const {id} = useParams();
     const dispatch = useDispatch();
     const [cambio, setCambio] = useState(false);
@@ -13,7 +13,7 @@ export default function Detail(props) {
     useEffect(() => {
       dispatch(getDetail(id));
       setCambio(true);
-    }, [dispatch]);
+    }, [dispatch, id, ]);
     console.log(detail);
   
     return (
@@ -21,13 +21,13 @@ export default function Detail(props) {
         <Link to="/home">
           <button>Go back</button>
         </Link>
-        {detail.length ? (
+        {detail.length > 0 ? (
           <div>
             <h1>Name: "{detail[0].title}"</h1>
             <img
               src={
-                detail[0].image ? (
-                  detail[0].image
+                detail[0].img ? (
+                  detail[0].img
                 ) : (
                   <img
                     src="https://previews.123rf.com/images/mackoflower/mackoflower1507/mackoflower150700380/42588917-variedad-de-ensaladas-populares-y-saludables-en-la-dieta-alimentos-collage-de-im%C3%A1genes.jpg"
@@ -38,7 +38,7 @@ export default function Detail(props) {
               alt="img recipe"
             />
             <div>
-              {detail[0].createdDb ? (
+              {/* {detail[0].createdInDb ? (
                 <h2>
                   Type of Diets: {detail[0].diets.map((d) => d.name).join(", ")}
                 </h2>
@@ -51,10 +51,10 @@ export default function Detail(props) {
                 </h2>
               )}
               <h3>
-                {detail[0].createdDb
+                {detail[0].createdInDb
                   ? null
                   : "Dish types: " + detail[0].dishTypes.join(", ")}
-              </h3>
+              </h3> */}
             </div>
             <div >
               {detail[0].aggregateLikes !== 0 ? (
@@ -76,7 +76,7 @@ export default function Detail(props) {
               )}
               {detail[0].analyzedInstructions.length > 0 ? (
                 <ul>
-                  {detail[0].createdDb ? (
+                  {detail[0].createdInDb ? (
                     <li>{detail[0].analyzedInstructions}</li>
                   ) : (
                     detail[0].analyzedInstructions[0].steps.map((p) => (

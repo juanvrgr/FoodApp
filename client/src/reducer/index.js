@@ -34,24 +34,23 @@ function rootReducer(state = initialState, action){
 
       case FILTER_BY_DIET:
       let allRecipes = state.allRecipes;
-      const recipesApi = allRecipes.filter((r) => !r.createdDb);
+      const recipesApi = allRecipes.filter((r) => !r.createdInDb);
       const filteredRecipesApi = recipesApi.filter((r) =>
-        r.diets.includes(action.payload)
-      );
-      const recipeDb = allRecipes.filter((r) => r.createdDb);
-      const filteredRecipeDb = recipeDb.filter(
-        (r) => r.diets.name === action.payload
-      );
-      const filtered = filteredRecipeDb.concat(filteredRecipesApi);
-      const vegetarianApi = allRecipes.filter((r) => r.vegetarian === true);
-      const vegetarianDb = recipeDb.filter(
-        (r) => r.diets.name === "vegetarian"
-      );
-      const vegetarian = vegetarianDb.concat(vegetarianApi);
-      const ternario = action.payload === "vegetarian" ? vegetarian : filtered;
+        r.diets.includes(action.payload.toString().toLowerCase()));
+      // const recipeDb = allRecipes.filter((r) => r.createdInDb);
+      // const filteredRecipeDb = recipeDb.filter(
+      //   (r) => r.diets.name === action.payload
+      // );
+      // const filtered = filteredRecipeDb.concat(filteredRecipesApi);
+      // const vegetarianApi = allRecipes.filter((r) => r.vegetarian === true);
+      // const vegetarianDb = recipeDb.filter(
+      //   (r) => r.diets.name === "vegetarian"
+      // );
+      // const vegetarian = vegetarianDb.concat(vegetarianApi);
+      // const ternario = action.payload === "vegetarian" ? vegetarian : filtered;
       return {
         ...state,
-        recipes: action.payload === "default" ? allRecipes : ternario,
+        recipes: action.payload === "default" ? state.allRecipes : filteredRecipesApi,
         //if, else if, else
       };
 

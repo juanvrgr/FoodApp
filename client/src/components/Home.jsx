@@ -123,6 +123,11 @@ return (
                     );
                  })
             }
+            <Paginate
+          recipesPerPage={recipesPerPage}
+          allRecipes={allRecipes.length} // Necesito un valor NUMERICO
+          paginate={paginate}
+        />
     </div>
 )
 }
