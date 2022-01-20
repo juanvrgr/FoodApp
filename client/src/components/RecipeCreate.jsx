@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { postRecipe, getDiets } from "../actions";
 import { useDispatch, useSelector } from "react-redux";
+import "../styles/RecipeCreate.css";
 
 function validate(input) {
   let errors = {};
@@ -15,14 +16,13 @@ function validate(input) {
   input.diets.length < 1
     ? (errors.diets = "Choose at least one diet")
     : (errors.diets = "");
-  if (!input.img.includes("https://") && !input.img.includes("http://")) {
-    errors.img = "This isn't a valid image address";
+  if (!input.image.includes("https://") && !input.image.includes("http://")) {
+    errors.image = "This isn't a valid image address";
   } else {
-    errors.img = "";
+    errors.image = "";
   }
   return errors;
 }
-
 
 export default function RecipeCreate() {
     const dispatch = useDispatch();
@@ -40,7 +40,7 @@ export default function RecipeCreate() {
         aggregateLikes: 0,
         healthScore: 0,
         analyzedInstructions: "",
-        img: "",
+        image: "",
         diets: [],
       });
 
@@ -71,7 +71,7 @@ export default function RecipeCreate() {
       }
 
       function handleSubmit(e) {
-        if (input.title && input.summary && input.img && input.diets.length > 0) {
+        if (input.title && input.summary && input.image && input.diets.length > 0) {
           e.preventDefault();
           dispatch(postRecipe(input));
           alert("Recipe succesfully Created!!");
@@ -81,7 +81,7 @@ export default function RecipeCreate() {
             aggregateLikes: 0,
             healthScore: 0,
             analyzedInstructions: "",
-            img: "",
+            image: "",
             diets: [],
           });
           navigate("/home");
@@ -99,37 +99,42 @@ export default function RecipeCreate() {
         });
       }
     
-
       return (
-        <div>
-          <Link to="/home"><button>Go back</button></Link>
-          <h1>Create your own Recipe here:</h1>
+        <div className="create">
+      <Link to="/home">
+        <button className="buttonToHome">Go Back</button>
+      </Link>
+          <h1>Create your own Recipe!</h1>
+          <div className="form">
           <form onSubmit={(e) => handleSubmit(e)}>
               <div>
-                <label>Recipe Name</label>
+                <label>Recipe Title</label>
                 <input
-                type="text"
+                className="inputCreate"
                 placeholder="Complete here..."
+                type="text"
                 value={input.title}
                 name="title"
                 onChange={(e) => handleChange(e)}
                 />
-                {errors.title && <p>{errors.title}</p>}
+                {errors.title && <p className="error">{errors.title}</p>}
               </div>
               <div>
                 <label>Summary:</label>
                 <input
-                type="text"
+                className="inputCreate"
                 placeholder="Complete here..."
+                type="text"
                 value={input.summary}
                 name="summary"
                 onChange={(e) => handleChange(e)}
                 />
-                {errors.summary && <p>{errors.summary}</p>}
+                {errors.summary && <p className="error">{errors.summary}</p>}
               </div>
               <div>
                 <label>Score:</label>
                 <input
+                className="inputCreate"
                 type="text"
                 value={input.aggregateLikes}
                 name="aggregateLikes"
@@ -139,6 +144,7 @@ export default function RecipeCreate() {
               <div>
               <label>Health Level:</label>
               <input
+              className="inputCreate"
               type="text"
               value={input.healthScore}
               name="healthScore"
@@ -146,9 +152,10 @@ export default function RecipeCreate() {
               />
           </div>
             <div>
-            <label >Instructions:</label>
+            <label className="labelInstr">Instructions:</label>
             <textarea
               type="text"
+              className="instruction"
               placeholder="Complete here..."
               rows="5"
               value={input.analyzedInstructions}
@@ -159,16 +166,17 @@ export default function RecipeCreate() {
             <div>
             <label>Image:</label>
             <input
-              type="text"
-              placeholder="Example: https://..."
-              value={input.img}
-              name="img"
-              onChange={(e) => handleChange(e)}
+            className="inputCreate"
+            type="text"
+            placeholder="Example: https://..."
+            value={input.image}
+            name="image"
+            onChange={(e) => handleChange(e)}
             />
-            {errors.img && <p>{errors.img}</p>}
+            {errors.image && <p className="error">{errors.image}</p>}
             </div>
-            <div>
-            <span>Type of Diet:</span>
+            <div className="dietsCreate">
+            <span >Type of Diet:</span>
             <select onChange={(e) => handleSelectDiet(e)}>
               {diets.map((d) => (
                 <option value={d.name} key={d.name}>
@@ -179,15 +187,16 @@ export default function RecipeCreate() {
             {input.diets.map((d, i) => (
               <ul key={i}>
                 <li>{d}</li>
-                <button onClick={(e) => handleDelete(e, d)}>x</button>
+                <button onClick={(e) => handleDelete(e, d)}>X</button>
               </ul>
             ))}
-            {errors.diets && <p>{errors.diets}</p>}
+            {errors.diets && <p className="error">{errors.diets}</p>}
           </div>
-          <button type="submit">
+          <button type="submit" className="btnCreate">
             Create Recipe
           </button>
           </form>
+        </div>
         </div>
       )
 }

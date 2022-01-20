@@ -15,7 +15,7 @@ module.exports = (sequelize) => {
       allowNull: false,
     },
     summary: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: false,
     },
     aggregateLikes: {
@@ -25,7 +25,7 @@ module.exports = (sequelize) => {
       type: DataTypes.INTEGER,
     },
     analyzedInstructions: {
-      type: DataTypes.TEXT,
+      type: DataTypes.JSON,
     },
     image: {
       type: DataTypes.STRING,

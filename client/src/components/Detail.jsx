@@ -3,31 +3,32 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getDetail } from "../actions";
 import { Link, useParams } from "react-router-dom";
+import "../styles/Detail.css";
 
 export default function Detail() {
     const {id} = useParams();
     const dispatch = useDispatch();
-    const [cambio, setCambio] = useState(false);
+    const [change, setChange] = useState(false);
     const detail = useSelector((state) => state.detail);
   
     useEffect(() => {
       dispatch(getDetail(id));
-      setCambio(true);
+      setChange(true);
     }, [dispatch, id, ]);
-    console.log(detail);
+    // console.log(detail);
   
     return (
-      <div>
+      <div className="detail">
         <Link to="/home">
-          <button>Go back</button>
+          <button>Go Back</button>
         </Link>
-        {detail.length > 0 ? (
+        {detail.length ? (
           <div>
-            <h1>Name: "{detail[0].title}"</h1>
+            <h1>"{detail[0].title}"</h1>
             <img
               src={
-                detail[0].img ? (
-                  detail[0].img
+                detail[0].image ? (
+                  detail[0].image
                 ) : (
                   <img
                     src="https://previews.123rf.com/images/mackoflower/mackoflower1507/mackoflower150700380/42588917-variedad-de-ensaladas-populares-y-saludables-en-la-dieta-alimentos-collage-de-im%C3%A1genes.jpg"
@@ -37,10 +38,10 @@ export default function Detail() {
               }
               alt="img recipe"
             />
-            <div>
-              {/* {detail[0].createdInDb ? (
+            <div className="h3-2">
+              {detail[0].createdInDb ? (
                 <h2>
-                  Type of Diets: {detail[0].diets.map((d) => d.name).join(", ")}
+                  Type of Diets: {detail[0].Diets.map((d) => d.name).join(", ")}
                 </h2>
               ) : (
                 <h2>
@@ -54,9 +55,10 @@ export default function Detail() {
                 {detail[0].createdInDb
                   ? null
                   : "Dish types: " + detail[0].dishTypes.join(", ")}
-              </h3> */}
+              </h3>
             </div>
-            <div >
+            
+            <div className="details">
               {detail[0].aggregateLikes !== 0 ? (
                 <h3>Score: {detail[0].aggregateLikes}</h3>
               ) : (

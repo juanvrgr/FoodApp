@@ -13,6 +13,7 @@ import { Link } from "react-router-dom";
 import Card from "./Card";
 import Paginate from "./Paginate";
 import SearchBar from "./SearchBar";
+import "../styles/Home.css";
 
 export default function Home() {
 const dispatch = useDispatch(); // DESPACHA LAS ACCIONES
@@ -77,58 +78,100 @@ useEffect(() => {
   }, [dispatch]);
 
 return (
-    <div>
-        <Link to="/recipe">Create recipe!</Link>
-        <h1>THE LAND OF RECIPES</h1>
-        <SearchBar />
-        <button onClick={e=> {handleClick(e)}}>Show recipes</button>
-        <div>
-            <select onChange={(n) => handleSelectByName(n)}>
-            <option value="default">All</option>
-            <option value="A-Z">A-Z</option>
-            <option value="Z-A">Z-A</option>
-            </select>
-            <select onChange={(s) => handleSelectByScore(s)}>
-                <option value="All">All</option>
-                <option value="Asc">Highest Score</option>
-                <option value="Desc">Lowest Score</option>
-            </select>
-            <select onChange={(e) => handleSelectTypeOfDiet(e)}>
-          <option value="default">All Diets</option>
-          {diets.map((d) => (
-            <option value={d.name} key={d.id}>
-              {d.name}
-            </option>
-          ))}
-        </select>
-        {/* <select onChange={e => handleFilterCreated(e)}>
-                <option value= 'All'>Todos</option>
-                <option value= 'created'>Creados</option>
-                
-            </select> */}
-            </div>
-            <Paginate
-          recipesPerPage={recipesPerPage}
-          allRecipes={allRecipes.length} // Necesito un valor NUMERICO
-          paginate={paginate}
-        />
-            {
-                currentRecipes?.map(el => {
-                    return(
-                        <fragment >
-                            <Link to={"/home/" + el.id}>
-                               <Card title={el.title} image={el.image} diets={el.diets} vegetarian={el.vegetarian} score={el.score}/>
-                            </Link>
-                        </fragment>
-                    );
-                 })
-            }
-            <Paginate
-          recipesPerPage={recipesPerPage}
-          allRecipes={allRecipes.length} // Necesito un valor NUMERICO
-          paginate={paginate}
-        />
+  <div className="home">
+    <h1>RECIPEX</h1>
+    <SearchBar />
+    <Link to="/recipe" className="linkCreate">
+      <button className="btnCreate">Create your recipe</button>
+    </Link>
+    <div className="showAll">
+      <button
+        onClick={(e) => {
+          handleClick(e);
+        }}
+      >
+        Show all recipes
+      </button>
     </div>
-)
+    <div className="select">
+      <span className="span">Order by Recipe Name</span>
+      <select onChange={(n) => handleSelectByName(n)}>
+        <option value="default">All</option>
+        <option value="A-Z">A-Z</option>
+        <option value="Z-A">Z-A</option>
+      </select>
+      <span className="span">Order by Score</span>
+      <select onChange={(s) => handleSelectByScore(s)}>
+        <option value="All">All</option>
+        <option value="Asc">Highest Score</option>
+        <option value="Desc">Lowest Score</option>
+      </select>
+      <span className="span">Filter by Type of diet</span>
+      <select onChange={(e) => handleSelectTypeOfDiet(e)}>
+        <option value="default">All</option>
+        {diets.map((d) => (
+          <option value={d.name} key={d.id}>
+            {d.name}
+          </option>
+        ))}
+      </select>
+    </div>
+    <div className="paginate">
+      <Paginate
+        recipesPerPage={recipesPerPage}
+        allRecipes={allRecipes.length}
+        paginate={paginate}
+      />
+    </div>
+    <div className="cards">
+      {currentRecipes?.map((c) => (
+        <div key={c.id}>
+          <Link to={"/home/" + c.id} className="linkCard">
+            <Card
+              title={c.title}
+              image={
+                c.image ? (
+                  c.image
+                ) : (
+                  <img
+                    src="https://image.freepik.com/foto-gratis/fondo-alimentos-concepto-alimentos-varios-sabrosos-ingredientes-frescos-cocinar-ingredientes-italianos-comida-vista-arriba_1220-1493.jpg"
+                    alt="Img not provided"
+                  />
+                )
+              }
+              diets={
+                c.createdInDb
+                  ? c.Diets.map((d) => (
+                      <p key={d.name} className="dietsMap">
+                        {d.name}
+                      </p>
+                    ))
+                  : c.diets.map((d) => (
+                      <p key={d} className="dietsMap">
+                        {d}
+                      </p>
+                    ))
+              }
+              vegetarian={
+                c.vegetarian === true ? (
+                  <p >vegetarian</p>
+                ) : (
+                  <p></p>
+                )
+              }
+              score={c.aggregateLikes}
+            />
+          </Link>
+        </div>
+      ))}
+    </div>
+    <div className="paginate">
+      <Paginate
+        recipesPerPage={recipesPerPage}
+        allRecipes={allRecipes.length}
+        paginate={paginate}
+      />
+    </div>
+  </div>
+);
 }
-

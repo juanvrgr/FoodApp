@@ -80,7 +80,7 @@ router.post("/recipe", async (req, res) => {
     createdInDb
   } = req.body;
   if (!title || !summary) {
-    return res.json("You must enter a title and a summary to create a recipe");
+    return res.json("Title and summary must be filled to continue");
   }
   let recipeCreated = await Recipe.create({
     title,
@@ -89,18 +89,13 @@ router.post("/recipe", async (req, res) => {
     healthScore,
     analyzedInstructions,
     image,
+    diets,
     createdInDb
   });
   let dietDb = await Diet.findAll({ where: { name: diets } });
   recipeCreated.addDiet(dietDb);
   res.send("Recipe created successfully");
 });
-
-//Nombre
-//Resumen del plato
-//Puntuación
-//Nivel de "comida saludable"
-//Paso a paso
 
 router.get("/recipes/:id", async (req, res) => {
   const { id } = req.params;

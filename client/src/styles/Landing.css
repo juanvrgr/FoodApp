@@ -1,6 +1,70 @@
-.landing {
+  .landing {
     width: 100%;
     height: 100%;
     position: absolute;
     background-image: url("../assets/imgLanding.jpg");
+  }
+
+  .landing h1 {
+    height: 20px;
+    padding-bottom: 40px;
+    display: flex;
+    justify-content: center;
+    margin-left: 7vw;
+    margin-top: 50px;
+    color: rgb(182, 59, 59);;
+    text-shadow: rgb(19, 19, 18) -3px 1px;
+    font-size: 65px;
+    font-family: "Comic Neue", cursive;
+  }
+  
+  .landing h2 {
+    margin-top: 100px;
+    height: 20px;
+    display: flex;
+    justify-content: center;
+    margin-left: 6vw;
+    padding-bottom: 20px;
+    color: rgb(223, 208, 124);
+    text-shadow: rgb(17, 17, 17) -1.5px 0.3px;
+    font-size: 24px;
+    font-family: "Comic Neue", cursive;
+  }
+  
+  .landing button {
+    border: solid 2px;
+    border-radius: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 180px;
+    padding: 0;
+    height: 70px;
+    margin-top: 400px;
+    background-color: rgb(182, 59, 59);;
+    transition: background-color 0.25s, color 0.25s;
+    cursor: pointer;
+    color: #cfcfcf;
+    margin-left: 45vw;
+    font-size: 20px;
+    font-family: "Comic Neue", cursive;
+  }
+
+  .landing button:hover {
+    background-color: #cfcfcf;
+    color: rgb(182, 59, 59);;
+  }
+  
+  /* .landing img {
+    display: flex;
+    justify-content: center;
+    margin-top: 0;
+    margin-left: 76vw;
+    width: 20vw;
+    height: 20vh;
+    border-radius: 20px;
+  } */
+  
+  .btnLan {
+    text-decoration: none;
   }

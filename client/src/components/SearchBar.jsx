@@ -2,7 +2,7 @@ import React from "react";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { getNameRecipe } from "../actions";
-
+import "../styles/SearchBar.css";
 
 export default function SearchBar() {
 const dispatch = useDispatch();
@@ -20,16 +20,16 @@ function handleSubmit(e) {
 }
 
 return (
-    <div>
+    <div className="searchBar">
         <input
+        className="input"
         type="text"
         value={name}
         placeholder="Search recipe..."
         onChange={(e) => handleInputChange(e)}
         />
-        <button type="submit" onClick={(e) => handleSubmit(e)}>Search</button>
+        <button type="submit" onClick={(e) => handleSubmit(e)} className="btn">Search</button>
     </div>
 
 )
-
 }

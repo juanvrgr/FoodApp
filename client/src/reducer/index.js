@@ -37,20 +37,20 @@ function rootReducer(state = initialState, action){
       const recipesApi = allRecipes.filter((r) => !r.createdInDb);
       const filteredRecipesApi = recipesApi.filter((r) =>
         r.diets.includes(action.payload.toString().toLowerCase()));
-      // const recipeDb = allRecipes.filter((r) => r.createdInDb);
-      // const filteredRecipeDb = recipeDb.filter(
-      //   (r) => r.diets.name === action.payload
-      // );
-      // const filtered = filteredRecipeDb.concat(filteredRecipesApi);
-      // const vegetarianApi = allRecipes.filter((r) => r.vegetarian === true);
-      // const vegetarianDb = recipeDb.filter(
-      //   (r) => r.diets.name === "vegetarian"
-      // );
-      // const vegetarian = vegetarianDb.concat(vegetarianApi);
-      // const ternario = action.payload === "vegetarian" ? vegetarian : filtered;
+      const recipeDb = allRecipes.filter((r) => r.createdInDb);
+      const filteredRecipeDb = recipeDb.filter(
+        (r) => r.Diets.name === action.payload
+      );
+      const filtered = filteredRecipeDb.concat(filteredRecipesApi);
+      const vegetarianApi = allRecipes.filter((r) => r.vegetarian === true);
+      const vegetarianDb = recipeDb.filter(
+        (r) => r.Diets.name === "vegetarian"
+      );
+      const vegetarian = vegetarianDb.concat(vegetarianApi);
+      const ternario = action.payload === "vegetarian" ? vegetarian : filtered;
       return {
         ...state,
-        recipes: action.payload === "default" ? state.allRecipes : filteredRecipesApi,
+        recipes: action.payload === "default" ? allRecipes : ternario,
         //if, else if, else
       };
 
@@ -80,6 +80,7 @@ function rootReducer(state = initialState, action){
         ...state,
         recipes: action.payload === "default" ? state.recipes : sortedRecipes,
       };
+
       // case 'FILTER_CREATED':
       //       const AllRecipes = state.allRecipes
       //       const createdFilter = action.payload === 'created' ? 
@@ -89,6 +90,7 @@ function rootReducer(state = initialState, action){
       //           ...state,
       //           recipes:  action.payload === 'All' ? allRecipes : createdFilter
       //       }
+      
     case ORDER_BY_SCORE_LIKES:
       let orderedRecipes =
         action.payload === "Desc"

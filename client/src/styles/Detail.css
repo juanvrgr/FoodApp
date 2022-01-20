@@ -1,0 +1,74 @@
+.detail {
+    background-image: url("../assets/imgDetail.jpg");
+    margin: 0;
+    width: 100%;
+    height: auto;
+    position: absolute;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    font-family: "Comic Neue", cursive;
+    color: rgb(223, 208, 124);
+  }
+  
+  .detail button {
+    border-color: rgb(216, 216, 215);
+    border: solid 2px;
+    border-width: 0.5px;
+    border-radius: 100px;
+    background-color: rgb(182, 59, 59);
+    transition: background-color 0.25s, color 0.25s;
+    padding: 7px;
+    margin-top: 10px;
+    margin-left: 90%;
+    margin-bottom: 0px;
+    font-family: "Comic Neue", cursive;
+    cursor: pointer;
+    color: rgb(216, 216, 215);
+  }
+
+  .detail button:hover {
+    background-color: rgb(216, 216, 215);
+    color: rgb(182, 59, 59);
+    border-color: rgb(182, 59, 59);
+  }
+  
+  .detail h1 {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+    font-size: 35px;
+    font-family: "Comic Neue", cursive;
+  }
+  
+  .detail img {
+    width: 300px;
+    height: 300px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+  
+  .h3-2 h3,
+  h2 {
+    display: flex;
+    justify-content: left;
+    margin-left: 10%;
+  }
+  
+  .details h3 {
+    margin-left: 10%;
+  }
+  
+  .details p {
+    margin-left: 17%;
+    margin-right: 17%;
+    background-color: #5f5f5fab;
+    padding: 2%;
+  }
+  
+  .details ul {
+    margin-left: 17%;
+    margin-right: 17%;
+    background-color: #5f5f5fab;
+    padding: 2%;
+  }
