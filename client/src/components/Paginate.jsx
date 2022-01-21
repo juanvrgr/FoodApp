@@ -7,6 +7,7 @@ export default function Paginate({ recipesPerPage, allRecipes, paginate }) {
         pageNumbers.push(i);
       }
 
+      // if(allRecipes > 9){
 return (
     <nav className="btnPag">
         {pageNumbers &&
@@ -17,4 +18,7 @@ return (
           ))}
     </nav>
 )
-}
+        // } else if(allRecipes <= 9){
+        //   return <div></div>
+        // }
+};

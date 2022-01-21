@@ -7,7 +7,7 @@ import {
     getTypesOfDiet,
     orderByName,
     orderByScoreLikes,
-    // filterCreated
+    // filterCreated,
 } from "../actions";
 import { Link } from "react-router-dom";
 import Card from "./Card";
@@ -70,7 +70,7 @@ function handleSelectByScore(e) {
 
 useEffect(() => {
     dispatch(getRecipes());
-  }, [dispatch]); // DESPACHO LA ACCION... PODRIA HACERSE CON mapStateToProps, mapStateToProps
+  }, [dispatch]); // DESPACHO LA ACCION... PODRIA HACERSE CON mapStateToProps, mapDispatchToProps
 // TRY [] IN CASE OF ERROR
 
 useEffect(() => {
@@ -159,7 +159,7 @@ return (
                   <p></p>
                 )
               }
-              score={c.aggregateLikes}
+              // score={c.aggregateLikes}
             />
           </Link>
         </div>

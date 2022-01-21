@@ -16,10 +16,10 @@ export default function Card({ title, image, diets, vegetarian, score }) {
         {diets}
         {vegetarian}
       </h5>
-      <h5 className="score">Score:</h5>
+      {/* <h5 className="score">Score:</h5>
       <h5 className="diets">
         {score}
-      </h5>
+      </h5> */}
     </div>
   );
 }

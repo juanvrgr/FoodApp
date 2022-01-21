@@ -37,6 +37,7 @@ const getAllRecipes = async () => {
   return totalInfo;
 };
 
+// Busca recetas por query o por la misma SearchBar
 router.get("/recipes", async (req, res) => {
   const { name } = req.query;
   const recipesTotal = await getAllRecipes();
@@ -52,6 +53,19 @@ router.get("/recipes", async (req, res) => {
   }
 });
 
+// Busca recetas por ID
+router.get("/recipes/:id", async (req, res) => {
+  const { id } = req.params;
+  const recipesTotal = await getAllRecipes();
+  if (id) {
+    let recipeId = await recipesTotal.filter((r) => r.id == id);
+    recipeId.length
+      ? res.status(200).json(recipeId)
+      : res.status(404).send("Recipe not found");
+  }
+});
+
+// Busca por tipo de dietas y agrega una dieta nueva (vegetarian)
 router.get("/types", async (req, res) => {
   const recipesApi = await axios.get(
     `https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&addRecipeInformation=true&number=100`
@@ -68,6 +82,7 @@ router.get("/types", async (req, res) => {
   res.json(allDiets);
 });
 
+// Crea una nueva receta en la base de datos
 router.post("/recipe", async (req, res) => {
   let {
     title,
@@ -80,7 +95,7 @@ router.post("/recipe", async (req, res) => {
     createdInDb
   } = req.body;
   if (!title || !summary) {
-    return res.json("Title and summary must be filled to continue");
+    return res.json("Title and summary must be filled to continue!");
   }
   let recipeCreated = await Recipe.create({
     title,
@@ -94,18 +109,7 @@ router.post("/recipe", async (req, res) => {
   });
   let dietDb = await Diet.findAll({ where: { name: diets } });
   recipeCreated.addDiet(dietDb);
-  res.send("Recipe created successfully");
-});
-
-router.get("/recipes/:id", async (req, res) => {
-  const { id } = req.params;
-  const recipesTotal = await getAllRecipes();
-  if (id) {
-    let recipeId = await recipesTotal.filter((r) => r.id == id);
-    recipeId.length
-      ? res.status(200).json(recipeId)
-      : res.status(404).send("Recipe not found");
-  }
+  res.send("Recipe created successfully!");
 });
 
 module.exports = router;

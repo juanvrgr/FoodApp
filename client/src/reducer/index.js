@@ -15,7 +15,7 @@ const initialState = {
     allRecipes: [],
     diets: [],
     detail: [],
-  };
+};
 
 function rootReducer(state = initialState, action){
     switch (action.type) {
@@ -91,41 +91,41 @@ function rootReducer(state = initialState, action){
       //           recipes:  action.payload === 'All' ? allRecipes : createdFilter
       //       }
       
-    case ORDER_BY_SCORE_LIKES:
-      let orderedRecipes =
-        action.payload === "Desc"
+        case ORDER_BY_SCORE_LIKES:
+          let orderedRecipes =
+          action.payload === "Desc"
           ? state.recipes.sort((a, b) => a.aggregateLikes - b.aggregateLikes)
           : state.recipes.sort((a, b) => b.aggregateLikes - a.aggregateLikes);
-      return {
-        ...state,
-        recipes: action.payload === "All" ? state.recipes : orderedRecipes,
-      };
+          return {
+          ...state,
+          recipes: action.payload === "All" ? state.recipes : orderedRecipes,
+        };
 
-    case GET_NAME_RECIPE:
-      return {
-        ...state,
-        recipes: action.payload,
-      };
+        case GET_NAME_RECIPE:
+          return {
+          ...state,
+          recipes: action.payload,
+        };
 
-    case GET_DIETS:
-      return {
-        ...state,
-        diets: action.payload,
-      };
+        case GET_DIETS:
+          return {
+          ...state,
+          diets: action.payload,
+        };
 
-    case POST_RECIPE:
-      return {
-        ...state,
-      };
+        case POST_RECIPE:
+          return {
+          ...state,
+        };
       
-    case GET_DETAIL:
-      return {
-        ...state,
-        detail: action.payload,
-      };
+        case GET_DETAIL:
+          return {
+          ...state,
+          detail: action.payload,
+        };
       default:
-      return state;
+        return state;
 }
-}
+};
 
 export default rootReducer;

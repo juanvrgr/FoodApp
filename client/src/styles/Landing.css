@@ -15,7 +15,7 @@
     color: rgb(182, 59, 59);;
     text-shadow: rgb(19, 19, 18) -3px 1px;
     font-size: 65px;
-    font-family: "Comic Neue", cursive;
+    font-family: Georgia, 'Times New Roman', Times, serif
   }
   
   .landing h2 {
@@ -27,8 +27,8 @@
     padding-bottom: 20px;
     color: rgb(223, 208, 124);
     text-shadow: rgb(17, 17, 17) -1.5px 0.3px;
-    font-size: 24px;
-    font-family: "Comic Neue", cursive;
+    font-size: 32px;
+    font-family: Georgia, 'Times New Roman', Times, serif
   }
   
   .landing button {
@@ -46,24 +46,14 @@
     cursor: pointer;
     color: #cfcfcf;
     margin-left: 45vw;
-    font-size: 20px;
-    font-family: "Comic Neue", cursive;
+    font-size: 25px;
+    font-family: Georgia, 'Times New Roman', Times, serif
   }
 
   .landing button:hover {
     background-color: #cfcfcf;
     color: rgb(182, 59, 59);;
   }
-  
-  /* .landing img {
-    display: flex;
-    justify-content: center;
-    margin-top: 0;
-    margin-left: 76vw;
-    width: 20vw;
-    height: 20vh;
-    border-radius: 20px;
-  } */
   
   .btnLan {
     text-decoration: none;

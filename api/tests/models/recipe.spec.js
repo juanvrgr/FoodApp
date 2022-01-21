@@ -1,25 +1,3 @@
-// const { Recipe, conn } = require('../../src/db.js');
-// const { expect } = require('chai');
-
-// describe('Recipe model', () => {
-//   before(() => conn.authenticate().catch((err) => {
-//       console.error('Unable to connect to the database:', err);
-//     }));
-//   describe('Validators', () => {
-//     beforeEach(() => Recipe.sync({ force: false }));
-//     describe('name', () => {
-//       it('should throw an error if name is null', (done) => {
-//         Recipe.create({})
-//           .then(() => done(new Error('It requires a valid name')))
-//           .catch(() => done());
-//       });
-//       it('should work when its a valid name', () => {
-//         Recipe.create({ name: 'Milanesa a la napolitana' });
-//       });
-//     });
-//   });
-// });
-
 const { Recipe, conn } = require('../../src/db.js');
 const { expect } = require('chai');
 
@@ -32,23 +10,23 @@ describe('Recipe model', () => {
     describe("Title", () => {
       it("Should throw an error if title is null", (done) => {
         Recipe.create({
-          summary: "Bifes de carne rebosados en pan rayado y frito o al horno",
+          summary: "Pizza calabresa con el mejor salame y aceitunas negras",
         })
-          .then(() => done(new Error("It requires a valid title")))
+          .then(() => done(new Error("Please put a title to your recipe!")))
           .catch(() => done());
       });
       it("Should throw an error if summary is null", () => {
-        Recipe.create({ title: "Milanesa de carne" })
-          .then(() => done(new Error("It requires a summary")))
+        Recipe.create({ title: "Pizza calabresa" })
+          .then(() => done(new Error("Please add a summary to your recipe!")))
           .catch(() => done());
       });
     });
     describe("Aggregate Likes", () => {
       it("Shouldn't work with a string in aggregateLikes", (done) => {
         Recipe.create({
-          title: "Milanesa de carne",
-          summary: "Bifes de carne rebosados en pan rayado y frito o al horno",
-          aggregateLikes: "This is invalid data",
+          title: "Pizza calabresa",
+          summary: "Pizza calabresa con el mejor salame y aceitunas negras",
+          aggregateLikes: "NaN",
         })
           .then(() => done("Should not be created"))
           .catch(() => done());
@@ -58,9 +36,9 @@ describe('Recipe model', () => {
     describe("Health Score", () => {
       it("Shouldn't work with a string in healthScore", (done) => {
         Recipe.create({
-          title: "Milanesa de carne",
-          summary: "Bifes de carne rebosados en pan rayado y frito o al horno",
-          healthScore: "This is invalid data",
+          title: "Pizza calabresa",
+          summary: "Pizza calabresa con el mejor salame y aceitunas negras",
+          healthScore: "NaN",
         })
           .then(() => done("Should not be created"))
           .catch(() => done());

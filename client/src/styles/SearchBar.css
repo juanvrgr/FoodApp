@@ -22,9 +22,9 @@
   
   .btn {
     margin-left: 8px;
-    border-radius: 10px;
+    border-radius: 5px;
     border: solid 2px;
-    font-size: 1rem;
+    font-size: 1.3rem;
     display: flex;
     justify-content: center;
     align-items: center;

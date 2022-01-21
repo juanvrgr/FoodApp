@@ -9,10 +9,10 @@ function validate(input) {
   let errors = {};
   input.title
     ? (errors.title = "")
-    : (errors.title = "You must name the recipe");
+    : (errors.title = "Put a name for your recipe!");
   input.summary
     ? (errors.summary = "")
-    : (errors.summary = "You must provide a summary");
+    : (errors.summary = "Put a summary for your recipe!");
   input.diets.length < 1
     ? (errors.diets = "Choose at least one diet")
     : (errors.diets = "");
@@ -22,7 +22,7 @@ function validate(input) {
     errors.image = "";
   }
   return errors;
-}
+};
 
 export default function RecipeCreate() {
     const dispatch = useDispatch();
@@ -55,7 +55,7 @@ export default function RecipeCreate() {
             [e.target.name]: e.target.value,
           })
         );
-      }
+      };
 
       function handleSelectDiet(e) {
         setInput((input) => ({
@@ -68,13 +68,13 @@ export default function RecipeCreate() {
             diets: [...input.diets, e.target.value],
           })
         );
-      }
+      };
 
       function handleSubmit(e) {
         if (input.title && input.summary && input.image && input.diets.length > 0) {
           e.preventDefault();
           dispatch(postRecipe(input));
-          alert("Recipe succesfully Created!!");
+          alert("Recipe created succesfully!");
           setInput({
             title: "",
             summary: "",
@@ -87,9 +87,9 @@ export default function RecipeCreate() {
           navigate("/home");
         } else {
           e.preventDefault();
-          alert("You must complete every field!!");
+          alert("You must complete every field to continue!");
         }
-      }
+      };
     
       function handleDelete(e, d) {
         e.preventDefault();
@@ -97,7 +97,7 @@ export default function RecipeCreate() {
           ...input,
           diets: input.diets.filter((diet) => diet !== d),
         });
-      }
+      };
     
       return (
         <div className="create">
@@ -199,4 +199,4 @@ export default function RecipeCreate() {
         </div>
         </div>
       )
-}
+};
