@@ -45,7 +45,6 @@ export default function Detail() {
                 </h2>
               ) : (
                 <h2>
-                  Type of Diets:
                   {detail[0].vegetarian === true
                     ? " " + detail[0].diets.join(", ") + ", vegetarian"
                     : " " + detail[0].diets.join(", ")}
@@ -57,7 +56,6 @@ export default function Detail() {
                   : "Dish types: " + detail[0].dishTypes.join(", ")}
               </h3>
             </div>
-            
             <div className="details">
               {detail[0].aggregateLikes !== 0 ? (
                 <h3>Score: {detail[0].aggregateLikes}</h3>
@@ -69,12 +67,12 @@ export default function Detail() {
               ) : (
                 <h3>Health Score: - </h3>
               )}
-              <h3>Summary:</h3>
+              <h3 className="boxTitle">Summary:</h3>
               <p>{detail[0].summary.replace(/<[^>]*>?/g, "")}</p>
               {detail[0].analyzedInstructions ? (
-                <h3>Step by step instructions: </h3>
+                <h3 className="boxTitle">Step by step instructions: </h3>
               ) : (
-                <h3>Step by step instructions: - </h3>
+                <h3 className="boxTitle">Step by step instructions: - </h3>
               )}
               {detail[0].analyzedInstructions.length > 0 ? (
                 <ul>

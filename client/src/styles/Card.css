@@ -7,7 +7,7 @@
     color: #444;
     display: inline-block;
     margin: 2%;
-    padding: 1em;
+    padding: 0.9em;
     vertical-align: top;
     width: 33, 5%;
   }
@@ -21,34 +21,41 @@
   }
   
   .cardComp h3:hover {
-    text-decoration: underline darkslategrey;
-    color: rgb(69, 70, 63);
-    text-shadow: rgb(223, 208, 124) -0.5px 0.5px;
+    color: rgb(182, 59, 59);
+    text-shadow: rgb(19, 19, 18) -3px 1px;
   }
+  
   .cardComp img {
     display: flex;
     margin-left: 20%;
   }
   
   .cardComp img:hover {
-    border: 2px outset rgba(119, 98, 28, 0.8);
+    border: 2px outset rgb(201, 201, 5);
   }
   
-  .typeOfD {
-    color: rgb(201, 201, 5);
-    text-decoration: underline;
+  .typeOfDiet {
+    color: rgb(117, 194, 46);
     margin-bottom: 7px;
     margin-top: 9px;
   }
   
   .diets {
-    color: rgb(214, 214, 209);
+    color: rgb(211, 214, 209);
     margin-top: 0;
     margin-bottom: 0;
   }
   
-  .score {
+  .hearth {
+    align-items: center;
     color: rgb(163, 4, 4);
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+
+  .score {
+    align-items: center;
+    color: rgb(211, 214, 209);
     margin-top: 0;
     margin-bottom: 0;
   }

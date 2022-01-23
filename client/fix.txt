@@ -1,0 +1,2 @@
+SearchBar: Cuando busca una receta en vez de tirar una alerta, que renderice un mensaje en pantalla
+RecipeCreate: Cuando selecciono un tipo de dieta, no poder volver a seleccionarla asi no se repite.

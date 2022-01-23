@@ -1,5 +1,7 @@
 import React from "react";
 import "../styles/Card.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faHeart } from "@fortawesome/free-solid-svg-icons";
 
 export default function Card({ title, image, diets, vegetarian, score }) {
   return (
@@ -11,15 +13,15 @@ export default function Card({ title, image, diets, vegetarian, score }) {
         width="150px"
         height="150px"
       />
-      <h5 className="typeOfD">Type of Diet:</h5>
+      <h5 className="typeOfDiet">Type of Diet:</h5>
       <h5 className="diets">
         {diets}
         {vegetarian}
       </h5>
-      {/* <h5 className="score">Score:</h5>
-      <h5 className="diets">
+      <h5 className="hearth"><FontAwesomeIcon icon={faHeart}/></h5>
+      <h5 className="score">
         {score}
-      </h5> */}
+      </h5>
     </div>
   );
 }

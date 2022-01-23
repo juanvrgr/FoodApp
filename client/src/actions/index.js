@@ -21,21 +21,6 @@ export function getRecipes() {
   };
 };
 
-// CON .THEN
-// export function getRecipes(){
-//   return function(dispatch){
-//            axios.get('http://localhost:3001/recipes')
-//           .then((json) => {
-//           return dispatch({
-//               type: GET_RECIPES,
-//               payload: json.data
-//           })
-//       }).catch((error) => {
-//           console.log(error)
-//       })
-//   }
-// }
-
 export function getTypesOfDiet() {
   return async function (dispatch) {
     try {
@@ -97,23 +82,6 @@ export function getDiets() {
   };
 };
 
-// CON .THEN
-// export function getDiets() {
-//   return function (dispatch) {
-//       try {
-//           axios.get(`http://localhost:3001/types`)
-//           .then(types => 
-//                dispatch({
-//               type: "GET_DIETS",
-//               payload: types.data
-//               })
-//           )
-//       } catch (error) {
-//           console.log(error);
-//       }
-//   }
-// }
-
 export function postRecipe(payload) {
   return async function () {
     const json = await axios.post("http://localhost:3001/recipe", payload);
@@ -137,6 +105,7 @@ export function getDetail(id) {
     }
   };
 };
+
 
 // export function filterCreated(payload){
 //    return{

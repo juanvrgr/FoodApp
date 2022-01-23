@@ -9,20 +9,22 @@
   .input {
     background-color: rgb(197, 183, 104);;
     border-color: rgb(24, 24, 24);
-    height: 18px;
+    height: 20px;
     color: rgb(24, 24, 24);
     font-size: 1rem;
     font-weight: 300;
-    width: 15rem;
+    width: 20rem;
+    font-family: Georgia, 'Times New Roman', Times, serif
   }
 
   input::placeholder {
     color: rgb(24, 24, 24);
   }
   
-  .btn {
-    margin-left: 8px;
-    border-radius: 5px;
+  .btnClear {
+    height: 26px;
+    margin-left: -30px;
+    border-radius: 3px;
     border: solid 2px;
     font-size: 1.3rem;
     display: flex;
@@ -34,7 +36,27 @@
     color: rgb(24, 24, 24);
   }
 
-  .btn:hover {
+  .btnClear:hover {
+    background-color: rgb(24, 24, 24);
+    color: rgb(197, 183, 104);
+  }
+
+  .btnSearch {
+    height: 26px;
+    margin-left: -35px;
+    border-radius: 3px;
+    border: solid 2px;
+    font-size: 1.1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(197, 183, 104);
+    transition: background-color 0.25s;
+    cursor: pointer;
+    color: rgb(24, 24, 24);
+  }
+
+  .btnSearch:hover {
     background-color: rgb(24, 24, 24);
     color: rgb(197, 183, 104);
   }

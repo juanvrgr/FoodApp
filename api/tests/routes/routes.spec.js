@@ -37,29 +37,5 @@ describe("Recipe routes", () => {
       }
     }).timeout(45000);
   });
-
-  // describe("GET /recipes/:id", () => {
-  //   it("should get 404", async () => {
-  //     try {
-  //       await agent
-  //         .get("/recipes/a4b32")
-  //         .expect(404)
-  //         .expect("Recipe not found");
-  //     } catch (err) {
-  //       console.log(err);
-  //     }
-  //   }).timeout(45000);
-
-  //   it("should get 200", async () => {
-  //     try {
-  //       await agent
-  //         .get("/recipes/592479")
-  //         .expect(200)
-  //         .expect("Content-Type", /json/);
-  //     } catch (err) {
-  //       console.log(err);
-  //     }
-  //   }).timeout(45000);
-  // });
 });
 

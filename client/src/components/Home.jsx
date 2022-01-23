@@ -16,7 +16,7 @@ import SearchBar from "./SearchBar";
 import "../styles/Home.css";
 
 export default function Home() {
-const dispatch = useDispatch(); // DESPACHA LAS ACCIONES
+const dispatch = useDispatch();
 const allRecipes = useSelector((state) => state.recipes); 
 const diets = useSelector((state) => state.diets);
 
@@ -70,8 +70,7 @@ function handleSelectByScore(e) {
 
 useEffect(() => {
     dispatch(getRecipes());
-  }, [dispatch]); // DESPACHO LA ACCION... PODRIA HACERSE CON mapStateToProps, mapDispatchToProps
-// TRY [] IN CASE OF ERROR
+  }, [dispatch]);
 
 useEffect(() => {
     dispatch(getTypesOfDiet());
@@ -80,7 +79,7 @@ useEffect(() => {
 return (
   <div className="home">
     <h1>RECIPEX</h1>
-    <SearchBar />
+    <SearchBar setCurrentPage={(setCurrentPage)}/>
     <Link to="/recipe" className="linkCreate">
       <button className="btnCreate">Create your recipe</button>
     </Link>
@@ -95,23 +94,23 @@ return (
     </div>
     <div className="select">
       <span className="span">Order by Recipe Name</span>
-      <select onChange={(n) => handleSelectByName(n)}>
-        <option value="default">All</option>
-        <option value="A-Z">A-Z</option>
-        <option value="Z-A">Z-A</option>
+      <select onChange={(n) => handleSelectByName(n)} className="filter">
+        <option value="default" className="filter">All</option>
+        <option value="A-Z" className="filter">A-Z</option>
+        <option value="Z-A" className="filter">Z-A</option>
       </select>
       <span className="span">Order by Score</span>
-      <select onChange={(s) => handleSelectByScore(s)}>
-        <option value="All">All</option>
-        <option value="Asc">Highest Score</option>
-        <option value="Desc">Lowest Score</option>
+      <select onChange={(s) => handleSelectByScore(s)} className="filter">
+        <option value="All" className="filter">All</option>
+        <option value="Asc" className="filter">Highest Score</option>
+        <option value="Desc" className="filter">Lowest Score</option>
       </select>
       <span className="span">Filter by Type of diet</span>
-      <select onChange={(e) => handleSelectTypeOfDiet(e)}>
-        <option value="default">All</option>
+      <select onChange={(e) => handleSelectTypeOfDiet(e)} className="filter">
+        <option value="default" className="filter">All</option>
         {diets.map((d) => (
-          <option value={d.name} key={d.id}>
-            {d.name}
+          <option value={d.name} key={d.id} className="filter">
+            {d.name} 
           </option>
         ))}
       </select>
@@ -159,7 +158,7 @@ return (
                   <p></p>
                 )
               }
-              // score={c.aggregateLikes}
+              score={c.aggregateLikes}
             />
           </Link>
         </div>

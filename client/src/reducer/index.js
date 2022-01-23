@@ -51,11 +51,9 @@ function rootReducer(state = initialState, action){
       return {
         ...state,
         recipes: action.payload === "default" ? allRecipes : ternario,
-        //if, else if, else
       };
 
       case ORDER_BY_NAME:
-      /*  let totalRecipes = [...state.allRecipes]; */
       let sortedRecipes =
         action.payload === "A-Z"
           ? state.recipes.sort(function (a, b) {

@@ -7,24 +7,29 @@
     background-position: center;
     background-repeat: no-repeat;
     background-attachment: fixed;
-    font-family: "Comic Neue", cursive;
+    font-family: Georgia, 'Times New Roman', Times, serif;
     color: rgb(223, 208, 124);
+  }
+
+  .detail h2 {
+    color: rgb(117, 194, 46);
   }
   
   .detail button {
     border-color: rgb(216, 216, 215);
     border: solid 2px;
     border-width: 0.5px;
-    border-radius: 100px;
+    border-radius: 30px;
     background-color: rgb(182, 59, 59);
     transition: background-color 0.25s, color 0.25s;
     padding: 7px;
     margin-top: 10px;
     margin-left: 90%;
     margin-bottom: 0px;
-    font-family: "Comic Neue", cursive;
+    font-family: Georgia, 'Times New Roman', Times, serif;
     cursor: pointer;
     color: rgb(216, 216, 215);
+    font-size: 17px;
   }
 
   .detail button:hover {
@@ -38,7 +43,7 @@
     justify-content: center;
     margin-top: 30px;
     font-size: 35px;
-    font-family: "Comic Neue", cursive;
+    font-family: Georgia, 'Times New Roman', Times, serif;
   }
   
   .detail img {
@@ -48,15 +53,13 @@
     margin-bottom: 20px;
   }
   
-  .h3-2 h3,
-  h2 {
-    display: flex;
-    justify-content: left;
-    margin-left: 10%;
+  .detail h2 {
+    align-items: center;
+    color: rgb(117, 194, 46);
   }
-  
-  .details h3 {
-    margin-left: 10%;
+
+  .h3-2 h3 {
+    align-items: center;
   }
   
   .details p {
@@ -64,6 +67,7 @@
     margin-right: 17%;
     background-color: #5f5f5fab;
     padding: 2%;
+    font-family: "Comic Neue", cursive;
   }
   
   .details ul {
@@ -71,4 +75,9 @@
     margin-right: 17%;
     background-color: #5f5f5fab;
     padding: 2%;
+    font-family: "Comic Neue", cursive;
+  }
+
+  .boxTitle {
+    font-size: 30px;
   }
